@@ -103,6 +103,10 @@ class InventoryItemDetailView(APIView):
 
             # Cache the updated data for future GET requests
             cache.set(cache_key, serializer.data, timeout=300)
+
+            # Clear cache after updating an item
+            cache.delete("all_inventory_items")
+
             logger.info("Updated item %s and refreshed cache", item_id)
 
             return Response(serializer.data, status=status.HTTP_200_OK)
@@ -119,6 +123,10 @@ class InventoryItemDetailView(APIView):
         # Delete the item and clear it from cache
         inventory_item.delete()
         cache.delete(cache_key)
+
+        # Clear cache after deleting an item
+        cache.delete("all_inventory_items")
+
         logger.info("Deleted item %s and cleared cache", item_id)
 
         return Response(
