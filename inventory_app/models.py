@@ -11,8 +11,8 @@ class InventoryItem(models.Model):
         unique=True,
         validators=[
             RegexValidator(
-                regex=r"^[a-z0-9_]+$",  # Lowercase alphanumeric and underscores only
-                message="Item code must be lowercase, alphanumeric, and can include underscores only.",
+                regex=r"^[A-Za-z0-9_]+$",  # Alphanumeric and underscores only
+                message="Item code must be alphanumeric, and can include underscores only.",
                 code="invalid_item_code",
             )
         ],
