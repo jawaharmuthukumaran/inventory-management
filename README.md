@@ -43,14 +43,30 @@ This project provides a backend API for managing inventory items, supporting ful
    git clone https://github.com/jawaharmuthukumaran/inventory-management.git
    cd inventory_management
    ```
+   
+2. **Create and Activate a Virtual Environment**:
 
-2. **Install dependencies**:
+   Follow the instructions based on your operating system:
+
+   - **macOS and Linux (including Ubuntu)**:
+     ```bash
+     python3 -m venv venv
+     source venv/bin/activate
+     ```
+
+   - **Windows**:
+     ```bash
+     python -m venv venv
+     venv\Scripts\activate
+     ```
+
+3. **Install dependencies**:
 
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Configure the PostgreSQL Database**:
+4. **Configure the PostgreSQL Database**:
 
    - Create a PostgreSQL database and a user.
    - Update the database settings in `settings.py`:
@@ -67,13 +83,6 @@ This project provides a backend API for managing inventory items, supporting ful
      }
      ```
 
-4. **Run Migrations**:
-
-   ```bash
-   python manage.py makemigrations
-   python manage.py migrate
-   ```
-
 5. **Configure Redis for Caching**:
    Ensure Redis is running locally and configured in `settings.py`:
 
@@ -89,7 +98,38 @@ This project provides a backend API for managing inventory items, supporting ful
    }
    ```
 
-6. **Run the Development Server**:
+6. **Configure Logging**:
+   Ensure logging is set up in `settings.py` to log application events and errors to a file called `inventory.log`:
+
+   ```python
+   LOGGING = {
+       "version": 1,
+       "disable_existing_loggers": False,
+       "handlers": {
+           "file": {
+               "level": "DEBUG",
+               "class": "logging.FileHandler",
+               "filename": "inventory.log",
+           },
+       },
+       "loggers": {
+           "": {
+               "handlers": ["file"],
+               "level": "DEBUG",
+               "propagate": True,
+           },
+       },
+   }
+   ```
+
+7. **Run Migrations**:
+
+   ```bash
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
+
+8. **Run the Development Server**:
    ```bash
    python manage.py runserver
    ```
