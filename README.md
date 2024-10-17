@@ -50,13 +50,13 @@ This project provides a backend API for managing inventory items, supporting ful
 
    - **macOS and Linux (including Ubuntu)**:
      ```bash
-     python3 -m venv venv
+     python3 -m venv <env_name>
      source venv/bin/activate
      ```
 
    - **Windows**:
      ```bash
-     python -m venv venv
+     python -m venv <env_name>
      venv\Scripts\activate
      ```
 
