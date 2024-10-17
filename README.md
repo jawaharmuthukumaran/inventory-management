@@ -125,7 +125,7 @@ This project provides a backend API for managing inventory items, supporting ful
 
   - **URL**: `/items/`
   - **Method**: `GET`
-  - **Response**: All item details
+  - **Response**: List of all item
   - **Caching**: Results are cached in Redis
 
 - **Read Item**:
